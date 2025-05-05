@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://v60t11u5tm04"]
+
+[ext_resource type="Script" path="res://newsurfavetry.gd" id="1_0f7pa"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ibkp4"]
+absorbent = true
+
+[sub_resource type="Curve2D" id="Curve2D_bd1sv"]
+bake_interval = 10.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ydmxp"]
+
+[node name="surface" type="StaticBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_ibkp4")
+script = ExtResource("1_0f7pa")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.12549, 0.0235294, 0, 1)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_bd1sv")
+
+[node name="Line2D" type="Line2D" parent="."]
+closed = true
+default_color = Color(0.156863, 0.176471, 0.0745098, 0.756863)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_ydmxp")

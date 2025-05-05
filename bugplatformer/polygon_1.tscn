@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl7s8ssj7y5ka"]
+
+[ext_resource type="Script" path="res://polygon1.gd" id="1_dt7sh"]
+
+[node name="polygon1" type="StaticBody2D"]
+modulate = Color(0, 0, 0, 1)
+script = ExtResource("1_dt7sh")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]

@@ -1,0 +1,178 @@
+[gd_scene load_steps=13 format=3 uid="uid://b46jfkmupwwru"]
+
+[ext_resource type="Script" path="res://newbug.gd" id="1_pjb5e"]
+[ext_resource type="Texture2D" uid="uid://bl7klucia5vsi" path="res://assets/bugwalk-removebg-preview.png" id="3_3p05j"]
+[ext_resource type="Texture2D" uid="uid://brg0d2qm4ytsu" path="res://assets/bugwalk2-removebg-preview.png" id="4_kfl3i"]
+[ext_resource type="Texture2D" uid="uid://b184c7npch4ot" path="res://assets/newladybugdefault.png" id="5_tohrk"]
+[ext_resource type="Texture2D" uid="uid://c37y8n42ddunn" path="res://assets/light-effect-some-light-focus-png-effect-25.png" id="7_47rma"]
+[ext_resource type="Texture2D" uid="uid://cw3gm8kyhvjvp" path="res://assets/newladybugfly2.png" id="7_312dq"]
+[ext_resource type="Texture2D" uid="uid://biembto7dyj7y" path="res://assets/newldaybugfly1.png" id="8_k4nxu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a26ym"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_tohrk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3p05j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tohrk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kfl3i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_tohrk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_k4nxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_312dq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_k4nxu")
+}],
+"loop": true,
+"name": &"flay",
+"speed": 40.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_01nyh"]
+radius = 31.917
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_yyn2c"]
+polygon = PackedVector2Array(-33, 21, -33, 18, -36, 18, -39, 19, -40, 19, -38, 16, -34, 15, -34, 13, -33, 11, -31, 9, -30, 6, -28, 4, -25, 1, -23, -1, -18, -5, -14, -8, -11, -9, -9, -10, -7, -10, -3, -11, -1, -11, 2, -11, 7, -11, 10, -10, 13, -8, 14, -7, 18, -4, 21, -3, 23, -1, 26, 2, 28, 4, 29, 6, 31, 9, 32, 12, 33, 14, 32, 15, 32, 16, 32, 17, 26, 17, 23, 17, 21, 17, 18, 16, 17, 18, 17, 21, 18, 24, 20, 26, 22, 28, 22, 30, 21, 30, 20, 28, 17, 25, 15, 23, 14, 19, 13, 16, 8, 15, 4, 14, 0, 14, -4, 14, -7, 14, -9, 13, -11, 14, -12, 16, -13, 21, -14, 24, -17, 28, -19, 29, -20, 28, -17, 26, -18, 26, -16, 23, -14, 18, -13, 13, -12, 12, -15, 11, -16, 10, -17, 13, -19, 14, -21, 16, -23, 17, -23, 19, -24, 21, -26, 22, -25, 19, -25, 18, -26, 19, -26, 21, -28, 23, -29, 24, -30, 25, -31, 23, -29, 21, -31, 21, -32, 21)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ersb2"]
+bg_color = Color(1, 1, 1, 0.505882)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 0.694118)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_al5a7"]
+bg_color = Color(0, 0, 0, 0.870588)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Bug" type="CharacterBody2D"]
+light_mask = 2
+script = ExtResource("1_pjb5e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+position = Vector2(-1.19209e-07, -7)
+scale = Vector2(0.215, 0.215)
+sprite_frames = SubResource("SpriteFrames_a26ym")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+rotation = 1.5708
+scale = Vector2(0.69, 0.69)
+shape = SubResource("CircleShape2D_01nyh")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+top_level = true
+offset = Vector2(0, -300)
+zoom = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 6
+visibility_layer = 7
+z_index = -1
+position = Vector2(2, 20)
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("7_47rma")
+texture_scale = 2.0
+
+[node name="vector" type="Node2D" parent="."]
+
+[node name="A" type="Node2D" parent="vector"]
+
+[node name="B" type="Node2D" parent="vector"]
+position = Vector2(-30, 0)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_yyn2c")
+occluder_light_mask = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="staminabar" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.91
+anchor_right = 0.114
+anchor_bottom = 0.949
+offset_top = 0.320007
+offset_right = -0.328003
+offset_bottom = 0.0479736
+theme_override_styles/background = SubResource("StyleBoxFlat_ersb2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_al5a7")
+value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="staminabar2" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.864
+anchor_right = 0.114
+anchor_bottom = 0.903
+offset_top = 0.127991
+offset_right = -0.328003
+offset_bottom = -0.144043
+theme_override_styles/background = SubResource("StyleBoxFlat_ersb2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_al5a7")
+value = 100.0
+show_percentage = false
+
+[node name="staminabar3" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.001
+anchor_top = 0.96
+anchor_right = 0.114
+anchor_bottom = 0.998
+offset_left = 1.152
+offset_top = -0.0800171
+offset_right = -0.328003
+offset_bottom = 0.295959
+theme_override_styles/background = SubResource("StyleBoxFlat_ersb2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_al5a7")
+value = 100.0
+show_percentage = false
