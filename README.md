@@ -8,6 +8,7 @@ Ability to stick on walls or ceilings like a real insect
 📦 Built with Godot 4.2.1 
 
 🚀 How to Play
+
 Clone or download the repository.
 
 Open the project with the Godot Engine.
